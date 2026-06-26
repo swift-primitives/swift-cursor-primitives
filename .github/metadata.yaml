@@ -1,0 +1,8 @@
+# .github/metadata.yaml
+description: "Cursor types for Swift."
+topics:
+  - primitives
+  - cursor
+homepage: "https://swift-institute.org"
+readme:
+  family: E

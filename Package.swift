@@ -13,12 +13,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Cursor Primitives Core",
-            targets: ["Cursor Primitives Core"]
-        ),
-        .library(
-            name: "Cursor Span Primitives",
-            targets: ["Cursor Span Primitives"]
+            name: "Cursor Primitive",
+            targets: ["Cursor Primitive"]
         ),
         .library(
             name: "Cursor Primitives",
@@ -30,29 +26,22 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-tagged-primitives"),
-        .package(path: "../swift-ordinal-primitives"),
-        .package(path: "../swift-cardinal-primitives"),
-        .package(path: "../swift-index-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-tagged-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ordinal-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-cardinal-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-index-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ownership-primitives.git", branch: "main"),
     ],
     targets: [
-        // MARK: - Core
+        // MARK: - Namespace
 
         .target(
-            name: "Cursor Primitives Core",
+            name: "Cursor Primitive",
             dependencies: [
                 .product(name: "Tagged Primitives", package: "swift-tagged-primitives"),
                 .product(name: "Ordinal Primitives", package: "swift-ordinal-primitives"),
                 .product(name: "Cardinal Primitives", package: "swift-cardinal-primitives"),
-            ]
-        ),
-
-        // MARK: - Variants
-
-        .target(
-            name: "Cursor Span Primitives",
-            dependencies: [
-                "Cursor Primitives Core",
+                .product(name: "Ownership Borrow Primitives", package: "swift-ownership-primitives"),
             ]
         ),
 
@@ -61,8 +50,7 @@ let package = Package(
         .target(
             name: "Cursor Primitives",
             dependencies: [
-                "Cursor Primitives Core",
-                "Cursor Span Primitives",
+                "Cursor Primitive",
             ]
         ),
 
@@ -80,10 +68,9 @@ let package = Package(
         // MARK: - Tests
 
         .testTarget(
-            name: "Cursor Span Primitives Tests",
+            name: "Cursor Primitives Tests",
             dependencies: [
-                "Cursor Span Primitives",
-                "Cursor Primitives Test Support",
+                "Cursor Primitives",
             ]
         ),
     ],
