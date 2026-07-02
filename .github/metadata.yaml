@@ -1,5 +1,5 @@
 # .github/metadata.yaml
-description: "Cursor types for Swift."
+description: "Move-only, non-escaping borrowed-byte cursor with phantom-typed position tracking for Swift."
 topics:
   - primitives
   - cursor
